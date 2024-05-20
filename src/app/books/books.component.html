@@ -1,24 +1,29 @@
-<div class="input-container">
-  <form>
-    <label>Title:</label>
-    <input type="text" [(ngModel)]="title" name="title"><br>
-    
-    <label>Author:</label>
-    <input type="text" [(ngModel)]="author" name="author"><br>
-    
-    <label>Genre:</label>
-    <input type="text" [(ngModel)]="genre" name="genre"><br>
-    
-    <label>Status:</label>
-    <select [(ngModel)]="status" name="status">
-      <option value="Read">Read</option>
-      <option value="Currently-Reading">Currently-Reading</option>
-      <option value="To-read">To-read</option>
-    </select><br>
+<h2>My Books</h2>
 
-    <label>Rating:</label>
-    <option type="number" [(ngModel)]="rating" name="rating" min="1" max="5">option>
-  </form>
+<div class="input-container">
+    <form>
+      <label>Title:</label>
+      <input type="text" [(ngModel)]="title" name="title"><br>
+      
+      <label>Author:</label>
+      <input type="text" [(ngModel)]="author" name="author"><br>
+      
+      <label>Status:</label>
+      <select [(ngModel)]="status" name="status">
+        <option value="Read">Read</option>
+        <option value="Currently-Reading">Currently-Reading</option>
+        <option value="To-read">To-read</option>
+      </select><br>
+  
+      <label>Rating:</label>
+      <select [(ngModel)]="rating" name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+      </select><br>      
+    </form>
 </div> 
 
 <div class="button-container">
@@ -26,14 +31,13 @@
   <button (click)="deleteBook()">Delete Book</button>
 </div> 
 
-<div class="header">
-  <h2>Your Books</h2>
-</div> 
-
 <div>
-  <ul>
-    <li *ngFor="let book of books" class="book-item">
-      <div class="book-font">{{ book.title }} by {{ book.author }}</div>
-    </li>
-  </ul>
+    <ul>
+      <li *ngFor="let book of books" class="book-item">
+        <button [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)"></button>
+        <div class="book-font">{{ book.title }} by {{ book.author }}</div>
+      </li>
+    </ul>
 </div>
+
+<app-book-detail [book]="selectedBook"></app-book-detail>

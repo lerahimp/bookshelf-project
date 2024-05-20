@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-books',
@@ -7,15 +8,18 @@ import { Book } from '../book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
+  constructor(private bookService: BookService) {}
+  selectedBook?: Book;
+
   books: Book[] = [];
   title: string = ''; 
   author: string = '';
   genre: string = '';
   status: string = '';
-  rating: number | undefined = undefined;
+  rating: number = 0;
   
   addBook(): void {
-    const newBook: Book = { title: this.title, author: this.author, genre: this.genre, status: this.status, rating: this.rating };
+    const newBook: Book = { title: this.title, author: this.author, status: this.status, rating: this.rating };
     
     if(this.title && this.author){
       this.books.push(newBook);
@@ -30,9 +34,16 @@ export class BooksComponent {
     }
   }
 
-  selectedBook?: Book;
-  select(book: Book): void {
+  onSelect(book: Book): void {
      this.selectedBook = book;
   }
 
+  getBooks(): void {
+    this.bookService.getBooks()
+        .subscribe(books => this.books = books);
+  }
+
+  ngOnInit(): void {
+    this.getBooks();
+  }
 }

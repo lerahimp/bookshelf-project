@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "online-library-project": {
+    "Bookshelf-Project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/online-library-project",
+            "outputPath": "dist/bookshelf-project",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "online-library-project:build:production"
+              "buildTarget": "Bookshelf-Project:build:production"
             },
             "development": {
-              "buildTarget": "online-library-project:build:development"
+              "buildTarget": "Bookshelf-Project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "online-library-project:build"
+            "buildTarget": "Bookshelf-Project:build"
           }
         },
         "test": {

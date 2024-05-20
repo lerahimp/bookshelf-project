@@ -3,18 +3,17 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { HomeComponent } from './home/home.component';
 import { BooksComponent } from './books/books.component';
-import { BookDetailsComponent } from './book-details/book-details.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent,
-    BookDetailsComponent,
-    DashboardComponent
+    BookDetailComponent,
+    HomeComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,

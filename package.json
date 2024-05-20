@@ -1,5 +1,5 @@
 {
-  "name": "online-library-project",
+  "name": "bookshelf-project",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:online-library-project": "node dist/online-library-project/server/server.mjs"
+    "serve:ssr:Bookshelf-Project": "node dist/bookshelf-project/server/server.mjs"
   },
   "private": true,
   "dependencies": {
