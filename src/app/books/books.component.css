@@ -1,9 +1,128 @@
-.container {
-    margin-top: 40px; 
-  }
-
-.button-container {
-  margin-top: 10px; 
+.header {
+  margin-left: 50px;
+  margin-top: 38px;
+  display: flex;
+  align-items: center;
 }
 
-  
+.book-button {
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 200px; 
+  height: 300px;
+  background-color: #9e5454;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  border: none; 
+  font-size: 20px;
+  color: #fff; 
+}
+
+.book-button:hover {
+  color: #caa1a1; 
+  background-color:#a86464;
+}
+
+.book-button.selected {
+  background-color: #5c4646; 
+}
+
+.books {
+  list-style: none;
+}
+
+.books li {
+  display: inline-block; 
+}
+
+.add-button {
+  display: inline-block;
+  background-color: transparent; 
+  color: #9e5454;
+  border: 2px solid #9e5454;
+  padding: 4px 40px;
+  cursor: pointer; 
+  border-radius: 4px; 
+  margin-left: 20px; 
+  margin-bottom: 5px;
+  font-size: 14px; 
+}
+
+.add-button:hover {
+  background-color: #af6e6e;
+  color: #fff; 
+}
+
+.popup {
+  width: 300px;
+  height: 400px;
+  background-color: #bda2a2;
+  margin-left: 600px;
+  border-radius: 20px;
+  visibility: hidden;
+  margin-top: -350px;
+  backdrop-filter: blur(600px); 
+}
+
+.popup.open-popup {
+  visibility: visible;
+}
+
+.popup.close-popup {
+  visibility: hidden;
+}
+
+.close-button {
+  display: inline-block;
+  background-color: #bda2a2;
+  color: #fff;
+  border: 2px solid #bda2a2; 
+  padding: 1px 30px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 220px;
+  margin-top: 20px;
+}
+
+.close-button:hover {
+  background-color: #a68484;
+}
+
+.form {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+.form-label {  
+  font-size: 16px; 
+  color: #ffffff; 
+  text-align: left; 
+} 
+
+.form-input { 
+  padding: 5px; 
+  border: 1px solid #ffffff; 
+  border-radius: 8px; 
+  font-size: 16px; 
+  width: 100%; 
+  box-sizing: border-box; 
+} 
+
+.add-button-popup {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #9e5454;
+  border: 2px solid #ffffff;
+  padding: 1px 30px;
+  cursor: pointer; 
+  margin-left: 75px;
+  margin-top: 35px;
+  font-size: 14px; 
+}
+
+.add-button-popup:hover {
+  background-color: rgb(233, 221, 221);
+}

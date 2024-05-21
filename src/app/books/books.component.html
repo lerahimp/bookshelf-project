@@ -1,43 +1,46 @@
-<h2>My Books</h2>
+<div class="header">
+  <h2 style="font-size: 50px;">My Books</h2>
+  <button class="add-button" (click)="openPopup()">Add Book</button>
+</div>
 
-<div class="input-container">
+<ul class="books">
+  <li *ngFor="let book of books">
+    <button class="book-button" [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)">
+      <span class="title" *ngIf="book !== selectedBook">{{book.title}} by </span>
+      <span class="author" *ngIf="book !== selectedBook">{{book.author}}</span>
+      <app-book-detail *ngIf="book === selectedBook" [book]="selectedBook"></app-book-detail>
+    </button>
+  </li>
+</ul>
+
+<div class="popup" [class.open-popup]="isPopupOpen">
+  <div class="close-button" (click)="closePopup()">X</div>
+  <div class="form">
     <form>
-      <label>Title:</label>
-      <input type="text" [(ngModel)]="title" name="title"><br>
+      <label class = "form-label">Title:</label>
+      <input class = "form-input" type="text" [(ngModel)]="title" name="title"><br>
       
-      <label>Author:</label>
-      <input type="text" [(ngModel)]="author" name="author"><br>
+      <label class = "form-label">Author:</label>
+      <input class = "form-input" type="text" [(ngModel)]="author" name="author"><br>
       
-      <label>Status:</label>
-      <select [(ngModel)]="status" name="status">
+      <label class = "form-label">Status:</label>
+      <select  class = "form-input" [(ngModel)]="status" name="status">
+        <option value="Read">--</option>
         <option value="Read">Read</option>
         <option value="Currently-Reading">Currently-Reading</option>
         <option value="To-read">To-read</option>
       </select><br>
   
-      <label>Rating:</label>
-      <select [(ngModel)]="rating" name="rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-      </select><br>      
+      <label class = "form-label">Rating:</label>
+      <select class = "form-input" [(ngModel)]="rating" name="rating">
+        <option value="N/A">N/A</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
     </form>
-</div> 
-
-<div class="button-container">
-  <button (click)="addBook()">Add Book</button>
-  <button (click)="deleteBook()">Delete Book</button>
-</div> 
-
-<div>
-    <ul>
-      <li *ngFor="let book of books" class="book-item">
-        <button [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)"></button>
-        <div class="book-font">{{ book.title }} by {{ book.author }}</div>
-      </li>
-    </ul>
+    <div class="add-button-popup">Add</div>
+  </div> 
 </div>
-
-<app-book-detail [book]="selectedBook"></app-book-detail>

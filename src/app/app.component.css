@@ -1,0 +1,27 @@
+.menu-rectangle {
+    height: 50px; 
+    width: 1512px;
+    background-color: #f1e7e7;
+}
+.menu-button {
+  display: inline-block;
+  padding: 13px 60px;
+  background-color: #f1e7e7;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.menu-button:hover {
+  background-color: #bda2a2;
+}
+
+.title {
+  font-size: 70px; 
+  margin-top: 20px; 
+  margin-left: 30px;
+  font-weight: bold;
+}

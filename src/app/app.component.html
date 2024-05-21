@@ -1,7 +1,8 @@
-<h1>{{title}}</h1>
-<h1>Hello World!</h1>
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/books">Books</a>
-</nav>
+<div class="title">{{ title }}</div> 
+<div class="menu-rectangle">
+    <nav>
+        <a routerLink="/home" class="menu-button">Home</a>
+        <a routerLink="/books" class="menu-button">Books</a>
+    </nav>
+</div>
 <router-outlet></router-outlet>

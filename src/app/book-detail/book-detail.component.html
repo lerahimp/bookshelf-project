@@ -1,6 +1,6 @@
-<div *ngIf="book">
-    <h2>{{book.title}} Details</h2>
+<div class="book-details" *ngIf="book">
+    <h2>{{book.title}}</h2>
     <div>Author: {{book.author}}</div>
     <div>Status: {{book.status}}</div>
-    <div>Rating: {{book.rating}}</div>
+    <div *ngIf="book.rating">Rating: {{book.rating}}</div>
 </div>

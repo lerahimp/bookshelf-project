@@ -1,0 +1,23 @@
+.rectangle {
+  width: 1420px;
+  height: 515px;
+  border-radius: 20px;
+  background-color: #9e5454;
+  margin-left: 40px;
+  margin-top: 30px;
+  padding-top: 60px;
+}
+
+.welcome-message {
+  margin-left: 40px;
+  margin-bottom: 40px;
+  font-size: 40px;
+  color: #fff;
+}
+
+.stats {
+  margin-left: 60px;
+  margin-top: 20px;
+  font-size: 35px;
+  color: #fff;
+}

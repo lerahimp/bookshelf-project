@@ -1,41 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
-
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit {
   constructor(private bookService: BookService) {}
-  selectedBook?: Book;
-
-  books: Book[] = [];
   title: string = ''; 
   author: string = '';
   genre: string = '';
   status: string = '';
-  rating: number = 0;
-  
-  addBook(): void {
-    const newBook: Book = { title: this.title, author: this.author, status: this.status, rating: this.rating };
-    
-    if(this.title && this.author){
-      this.books.push(newBook);
-    }
-  }
+  rating: number | undefined = undefined;
 
-  deleteBook(): void {
-    const index = this.books.findIndex(book => book.title === this.title && book.author === this.author);
-    
-    if (index !== -1) {
-        this.books.splice(index, 1);
-    }
-  }
+  books: Book[] = [];
+  selectedBook?: Book;
+
+  isPopupOpen: boolean = false;
 
   onSelect(book: Book): void {
-     this.selectedBook = book;
+    this.selectedBook = book;
   }
 
   getBooks(): void {
@@ -45,5 +30,13 @@ export class BooksComponent {
 
   ngOnInit(): void {
     this.getBooks();
+  }
+
+  openPopup(): void {
+    this.isPopupOpen = true;
+  }
+
+  closePopup() {
+    this.isPopupOpen = false;
   }
 }

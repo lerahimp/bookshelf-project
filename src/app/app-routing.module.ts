@@ -5,10 +5,10 @@ import {HomeComponent } from './home/home.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'books', component: BooksComponent },
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'detail', component: BookDetailComponent }
+  { path: 'detail/:title', component: BookDetailComponent }
 ];
 
 @NgModule({
