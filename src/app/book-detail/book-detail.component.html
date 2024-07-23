@@ -1,6 +1,37 @@
 <div class="book-details" *ngIf="book">
-    <h2>{{book.title}}</h2>
-    <div>Author: {{book.author}}</div>
-    <div>Status: {{book.status}}</div>
-    <div *ngIf="book.rating">Rating: {{book.rating}}</div>
+  <div class="book-cover">
+    <img *ngIf="book?.book_cover_url" [src]="book?.book_cover_url" alt="Book Cover" class="cover-image">
+ </div>
+  <div class="info">
+    <div class="title-header">{{ book?.title }}</div>
+    <div>Author: {{ book?.author }}</div>
+    <div *ngIf="book?.genre">Genre: {{ book?.genre }}</div>
+    <div>Status: {{ book?.status }}</div>
+    <div *ngIf="book?.status === 'Read'"> Rating: {{ book?.rating }}</div>
+  </div>
+</div>
+
+<button class="edit-button" (click)="openPopup()">Edit Book</button>
+
+<div class="edit-popup" [class.open-edit-popup]="isEditPopupOpen">
+  <div class="close-button" (click)="closePopup()">X</div>
+  <form *ngIf="book" (ngSubmit)="updateBook(book)">
+    <label class="form-label">Status:</label>
+    <select class="form-input" [(ngModel)]="book.status" name="status">
+      <option value="Read">Read</option>
+      <option value="Currently Reading">Currently Reading</option>
+      <option value="To-read">To-Read</option>
+    </select><br>
+
+    <label class="form-label">Rating:</label>
+    <select class="form-input" [(ngModel)]="book.rating" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select><br>
+
+    <button type="submit" class="confirm-edit-button">Edit</button>
+  </form>
 </div>

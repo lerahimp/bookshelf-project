@@ -1,46 +1,64 @@
 <div class="header">
-  <h2 style="font-size: 50px;">My Books</h2>
-  <button class="add-button" (click)="openPopup()">Add Book</button>
+  <div class="my-books-title">My Books</div>
+  <div class="search-bar">
+    <form id="form" role="search" (submit)="search()">
+      <input type="search" id="query" name="q" [(ngModel)]="searchQuery"
+             placeholder="Search..." aria-label="Search through site content">
+      <button type="submit" class="search-button">Search</button>
+    </form>
+    <button *ngIf="searchQuery" class="search-button" (click)="resetSearch()">Clear</button>
+  </div>
+  <button *ngIf="!deleteModeActive" class="add-button" (click)="openPopup()">Add Book</button>
+  <button class="delete-button" (click)="toggleDeleteMode()">Delete Book</button>
 </div>
 
-<ul class="books">
-  <li *ngFor="let book of books">
-    <button class="book-button" [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)">
-      <span class="title" *ngIf="book !== selectedBook">{{book.title}} by </span>
-      <span class="author" *ngIf="book !== selectedBook">{{book.author}}</span>
-      <app-book-detail *ngIf="book === selectedBook" [book]="selectedBook"></app-book-detail>
-    </button>
-  </li>
+<ul class="books" [class.delete-mode-active]="deleteModeActive">
+  <ng-container *ngIf="books.length > 0; else emptyLibrary">
+    <li *ngFor="let book of books">
+      <button class="book-button" [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)">
+        <img *ngIf="book?.book_cover_url" [src]="book?.book_cover_url" alt="Book Cover" class="cover-image">
+        <app-book-detail *ngIf="book === selectedBook" [book]="book"></app-book-detail>
+        {{book.title}} by {{book.author}}
+      </button>
+    </li>
+  </ng-container>
+  <ng-template #emptyLibrary>
+    <p class="empty-library-message">Library is currently empty</p>
+  </ng-template>
 </ul>
 
 <div class="popup" [class.open-popup]="isPopupOpen">
   <div class="close-button" (click)="closePopup()">X</div>
   <div class="form">
     <form>
-      <label class = "form-label">Title:</label>
-      <input class = "form-input" type="text" [(ngModel)]="title" name="title"><br>
-      
-      <label class = "form-label">Author:</label>
-      <input class = "form-input" type="text" [(ngModel)]="author" name="author"><br>
-      
-      <label class = "form-label">Status:</label>
-      <select  class = "form-input" [(ngModel)]="status" name="status">
-        <option value="Read">--</option>
+      <label class="form-label">Title:</label>
+      <input class="form-input" type="text" [(ngModel)]="title" name="title"><br>
+
+      <label class="form-label">Author:</label>
+      <input class="form-input" type="text" [(ngModel)]="author" name="author"><br>
+
+      <label class="form-label">Genre:</label>
+      <input class="form-input" type="text" [(ngModel)]="genre" name="genre"><br>
+
+      <label class="form-label">Status:</label>
+      <select class="form-input" [(ngModel)]="status" name="status">
         <option value="Read">Read</option>
-        <option value="Currently-Reading">Currently-Reading</option>
-        <option value="To-read">To-read</option>
+        <option value="Currently-Reading">Currently Reading</option>
+        <option value="To-read">To Read</option>
       </select><br>
-  
-      <label class = "form-label">Rating:</label>
-      <select class = "form-input" [(ngModel)]="rating" name="rating">
-        <option value="N/A">N/A</option>
+
+      <label class="form-label">Rating:</label>
+      <select class="form-input" [(ngModel)]="rating" name="rating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
       </select><br>
+
+      <label class="form-label">Book Cover URL:</label>
+      <input class="form-input" type="text" [(ngModel)]="book_cover_url" name="bookCoverUrl"><br>
     </form>
-    <div class="add-button-popup">Add</div>
-  </div> 
+    <div class="add-button-popup" (click)="addBook()">Add</div>
+  </div>
 </div>

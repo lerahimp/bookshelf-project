@@ -1,5 +1,13 @@
+<div class="welcome-message">Welcome Lara!</div>
 <div class="rectangle">
-    <div class="welcome-message">Welcome Lara!</div>
-    <div class="stats">You have _ books</div>
-    <div class="stats">Recently Read:</div>
+    <div class="stats">Total Book Count: {{ getCount() }}</div>
+    <div class="stats" style="margin-top: 15px;">Recently Added:</div>
+    <ul *ngIf="recentBooks.length > 0;">
+        <li *ngFor="let book of recentBooks" class="book-item">
+          <img *ngIf="book?.book_cover_url" [src]="book?.book_cover_url" alt="Book Cover" class="cover-image">
+          <div class = "book-details"> 
+            {{ book.title }} - {{ book.author }}
+          </div>
+        </li>
+    </ul>
 </div>

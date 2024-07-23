@@ -1,23 +1,61 @@
 .rectangle {
   width: 1420px;
-  height: 515px;
+  height: 435px;
   border-radius: 20px;
-  background-color: #9e5454;
-  margin-left: 40px;
-  margin-top: 30px;
-  padding-top: 60px;
+  background-color: #583838;
+  margin-left: 45px;
+  margin-top: 0px;
+  padding-top: 20px;
 }
 
 .welcome-message {
   margin-left: 40px;
-  margin-bottom: 40px;
-  font-size: 40px;
-  color: #fff;
+  margin-top: 20px;
+  font-size: 60px;
+  color: #000000;
+  font-weight: 300;
 }
 
 .stats {
   margin-left: 60px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 35px;
   color: #fff;
+  font-weight: 200;
+}
+
+.book-item {
+  margin-left: 10px;
+  width: 170px; 
+  height: 250px;
+  background-color: #9f6262;
+  border-radius: 10px;
+  text-align: left;
+  border: none; 
+  font-size: 25px;
+  color: #fff; 
+  font-family: serif;
+  list-style: none;
+  justify-content: left;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: left; 
+  gap: 20px; 
+  margin-left: 100px; 
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-details {
+  padding: 10px;
 }
